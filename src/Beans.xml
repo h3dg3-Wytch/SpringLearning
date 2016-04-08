@@ -14,7 +14,7 @@
 
     </bean>
 
-    <bean id = "lifeCycleMessage" class="LifeCycle.LifeCycleMessage">
-
+    <bean id = "lifeCycleMessage" class="LifeCycle.LifeCycleMessage" init-method="init" destroy-method="destroy">
+        <property name="message" value="Hello World!" />
     </bean>
 </beans>

@@ -12,5 +12,8 @@ public class LifeCycleApp {
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 
         LifeCycleMessage message = (LifeCycleMessage) context.getBean("lifeCycleMessage");
+        message.getMessage();
+        context.registerShutdownHook();
+
     }
 }
