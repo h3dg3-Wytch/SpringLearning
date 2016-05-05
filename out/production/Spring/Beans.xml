@@ -2,13 +2,16 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-<context:annotation-config/>
+    <!-- xmlns:p="http://www.springframework.org/schema/p" -->
+
+    <context:annotation-config/>
 
     <!--<bean id="goodMorning" class="Retest.GoodMorning">
         
@@ -30,19 +33,22 @@
     </bean>
 
 
-    <bean id = "goodNight" class="Singelton.GoodNight" parent="goodMorning">
+    <bean id="goodNight" class="Singelton.GoodNight" parent="goodMorning">
 
-        <property name="message1" value="Good Night!" />
-        <property name="message3" value="I miss the long night" />
+        <property name="message1" value="Good Night!"/>
+        <property name="message3" value="I miss the long night"/>
 
     </bean>
 
-    <bean id = "sun" class="Dependency.Sun" >
+    <bean id="sun" class="Dependency.Sun">
 
+        <!--
         <constructor-arg ref = "planet"/>
+        -->
+       <property name="planet" ref="planet" />
     </bean>
 
-    <bean id = "planet" class="Dependency.Planet">
+    <bean id="planet" class="Dependency.Planet">
 
     </bean>
 
@@ -50,9 +56,6 @@
     <!-- This is the BeanPostProcessor, allowing us to work our init logic to our hearts content
     <bean class="Singelton.InitGoodMorning" />
     -->
-
-
-
 
 
     <!--
