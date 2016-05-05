@@ -51,7 +51,51 @@
         </property>
     </bean>
 
+    <bean id="collections" class="Collection.Collections">
 
+        <property name="list">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+                <value>4</value>
+                <value>5</value>
+
+            </list>
+
+        </property>
+
+        <property name="set">
+            <set>
+                <value>6</value>
+                <value>7</value>
+                <value>8</value>
+                <value>9</value>
+                <value>10</value>
+            </set>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="1" value="INDIA"/>
+                <entry key="2" value="Pakistan"/>
+                <entry key="3" value="USA"/>
+                <entry key="4" value="USA"/>
+            </map>
+            
+        </property>
+        
+        <property name="prop">
+            <props>
+                <prop key="one">INDIA</prop>
+                <prop key="two">Pakistan</prop>
+                <prop key="three">USA</prop>
+                <prop key="four">USA</prop>
+            </props>
+            
+        </property>
+
+    </bean>
 
 
 
