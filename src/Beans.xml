@@ -20,17 +20,21 @@
     </bean>
     -->
 
-    <!--
-    <bean id="goodMorning" class="Singelton.GoodMorning" init-method="init" destroy-method="destroy">
-        <property name="message1" value="Good Morning!"/>
-        <property name="message2" value="What a Lovely Day!"/>
-    </bean>
 
-    -->
     <bean id="goodMorning" class="Singelton.GoodMorning">
         <property name="message1" value="Good Morning!"/>
         <property name="message2" value="What a Lovely Day!"/>
     </bean>
+
+
+    <!--
+    <bean id="goodMorning" class="Singelton.GoodMorning">
+        <property name="message1" value="Good Morning!"/>
+        <property name="message2" value="What a Lovely Day!"/>
+    </bean>
+    -->
+
+
 
 
     <bean id="goodNight" class="Singelton.GoodNight" parent="goodMorning">
@@ -42,16 +46,28 @@
 
     <bean id="sun" class="Dependency.Sun">
 
-        <!--
+        <property name="planet">
+            <bean id="planet" class="Dependency.Planet"/>
+        </property>
+    </bean>
+
+
+
+
+
+    <!-- Setter Dependency
+    <bean id="sun" class="Dependency.Sun">
+
+
         <constructor-arg ref = "planet"/>
-        -->
+
        <property name="planet" ref="planet" />
     </bean>
 
     <bean id="planet" class="Dependency.Planet">
 
     </bean>
-
+    -->
 
     <!-- This is the BeanPostProcessor, allowing us to work our init logic to our hearts content
     <bean class="Singelton.InitGoodMorning" />
