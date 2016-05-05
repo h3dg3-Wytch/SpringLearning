@@ -1,19 +1,20 @@
-package HelloWorld;
+package Dependency;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.weaving.DefaultContextLoadTimeWeaver;
 
 /**
- * Created by rex on 4/8/16.
+ * Created by rex on 5/5/16.
  */
-public class HelloApp{
+public class CelestialApp {
 
     public static void main(String[] args){
-        //This Apli oloads beans config files and it takes care of objects
+
         ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 
-        HelloMessage message = (HelloMessage) context.getBean("helloWorld");
+        Sun sol = (Sun) context.getBean("sun");
+        sol.orbit();
 
-        message.getMessage();
     }
 }

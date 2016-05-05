@@ -2,19 +2,146 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <bean id="helloWorld" class="HelloWorld.HelloMessage" >
-        <!--  You can use the property tag to pass in the values of different variables-->
-        <property name="message" value="Hello World!" />
+<context:annotation-config/>
+
+    <!--<bean id="goodMorning" class="Retest.GoodMorning">
+        
+        <property name="message" value="Good Morning" />
+        
+    </bean>
+    -->
+
+    <!--
+    <bean id="goodMorning" class="Singelton.GoodMorning" init-method="init" destroy-method="destroy">
+        <property name="message1" value="Good Morning!"/>
+        <property name="message2" value="What a Lovely Day!"/>
     </bean>
 
-    <bean id = "singletonMessage" class="Singelton.SingeltonMessage" scope="singleton">
+    -->
+    <bean id="goodMorning" class="Singelton.GoodMorning">
+        <property name="message1" value="Good Morning!"/>
+        <property name="message2" value="What a Lovely Day!"/>
+    </bean>
+
+
+    <bean id = "goodNight" class="Singelton.GoodNight" parent="goodMorning">
+
+        <property name="message1" value="Good Night!" />
+        <property name="message3" value="I miss the long night" />
 
     </bean>
 
-    <bean id = "lifeCycleMessage" class="LifeCycle.LifeCycleMessage" init-method="init" destroy-method="destroy">
-        <property name="message" value="Hello World!" />
+    <bean id = "sun" class="Dependency.Sun" >
+
+        <constructor-arg ref = "planet"/>
     </bean>
+
+    <bean id = "planet" class="Dependency.Planet">
+
+    </bean>
+
+
+    <!-- This is the BeanPostProcessor, allowing us to work our init logic to our hearts content
+    <bean class="Singelton.InitGoodMorning" />
+    -->
+
+
+
+
+
+    <!--
+        <bean id="helloWorld" class="HelloWorld.HelloMessage" >
+
+            <property name="message" value="Hello World!" />
+        </bean>
+
+        <bean id="beanTemplate" abstract="true">
+            <property name="message1" value="Hello World!"/>
+            <property name="message2" value="Hello Again World!"/>
+            <property name="message3" value="Found in Fog"/>
+        </bean>
+
+        <bean id = "singletonMessage" class="Singelton.SingeltonMessage" scope="singleton">
+
+        </bean>
+
+        <bean id = "lifeCycleMessage" class="LifeCycle.LifeCycleMessage" init-method="init" destroy-method="destroy">
+            <property name="message" value="Hello World!" />
+        </bean>
+
+        <bean id="definitionMessage" class="Definition.DefinitionMessage" >
+
+            <property name="message1" value="hello, world!" />
+            <property name="message2" value="hello, again world!" />
+        </bean>
+
+        <bean id="definitionSFMessagge" class="Definition.HelloSF" parent="beanTemplate" >
+
+            <property name="message1" value="hello, bay area!"/>
+            <property name="message3" value="Lost in Mist" />
+        </bean>
+
+        <bean id="textEditor" class="Text.TextEditor">
+            <property name="spellChecker">
+                <bean id = "spellChecker" class="Text.SpellChecker"/>
+            </property>
+        </bean>
+
+        <bean id="javaCollection" class="Collections.JavaCollection">
+            <property name="addressList">
+                <list>
+                    <value>INDIA</value>
+                    <value>Pakistan</value>
+                    <value>USA</value>
+                    <value>USA</value>
+                </list>
+            </property>
+
+            <property name="addressSet">
+                <set>
+                    <value>INDIA</value>
+                    <value>Pakistan</value>
+                    <value>USA</value>
+                    <value>USA</value>
+                </set>
+            </property>
+
+
+            <property name="addressMap">
+                <map>
+                    <entry key="1" value ="INDIA" />
+                    <entry key="2" value="Pakistan"/>
+                    <entry key="3" value="USA"/>
+                    <entry key="4" value="USA"/>
+                </map>
+            </property>
+
+            <property name="addressProp" >
+                <props>
+                    <prop key="one">INDIA</prop>
+                    <prop key="two">Pakistan</prop>
+                    <prop key="three">USA</prop>
+                    <prop key="four">USA</prop>
+                </props>
+            </property>
+        </bean>
+
+        <context:annotation-config/>
+
+        <bean id="student" class="Requiered.Student">
+            <property name="name"  value="Zara" />
+            <property name="age"  value="11"/>
+
+        </bean>
+
+        <bean id="autoWireTextEditor" class="Autowire.AutoWireTextEditor"></bean>
+        <bean id="autoWireSpellChecker" class="Autowire.AutoWireSpellChecker"></bean>
+    -->
+
 </beans>
