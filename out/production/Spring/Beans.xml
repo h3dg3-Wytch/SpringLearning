@@ -44,12 +44,11 @@
 
     </bean>
 
-    <bean id="sun" class="Dependency.Sun">
-
-        <property name="planet">
-            <bean id="planet" class="Dependency.Planet"/>
-        </property>
+    <bean id="sun" class="Autowire.Sun" autowire="byName">
+        <property name="name" value="Sol"/>
     </bean>
+
+    <bean id="planet" class="Autowire.Planet"/>
 
     <bean id="collections" class="Collection.Collections">
 
